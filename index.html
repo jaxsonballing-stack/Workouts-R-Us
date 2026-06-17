@@ -754,29 +754,7 @@
         <input class="form-input" type="email" placeholder="jane@example.com" id="pay-email">
       </div>
 
-      <div class="form-group" style="margin-top:28px;">
-        <label class="form-label">Card Information</label>
-        <div class="card-icons">
-          <div class="card-icon">💳</div>
-          <div class="card-icon">🏦</div>
-        </div>
-        <input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19" id="pay-card-num" style="margin-bottom:10px;" oninput="formatCard(this)">
-        <div class="form-row">
-          <input class="form-input" type="text" placeholder="MM / YY" maxlength="7" id="pay-expiry" oninput="formatExpiry(this)">
-          <input class="form-input" type="text" placeholder="CVV" maxlength="4" id="pay-cvv">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Billing Address</label>
-        <input class="form-input" type="text" placeholder="123 Main Street" style="margin-bottom:10px;">
-        <div class="form-row">
-          <input class="form-input" type="text" placeholder="City">
-          <input class="form-input" type="text" placeholder="ZIP Code">
-        </div>
-      </div>
-
-      <div class="pay-guarantee">
+      <div class="pay-guarantee" style="margin-top:28px;">
         <div style="font-size:28px;">🏆</div>
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
@@ -1356,13 +1334,11 @@ function buyProgram(key) {
 function processPayment() {
   const name = document.getElementById('pay-fullname').value.trim();
   const email = document.getElementById('pay-email').value.trim();
-  const cardNum = document.getElementById('pay-card-num').value.trim();
 
   if (!name) { alert('Please enter your full name.'); return; }
   if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  if (!cardNum || cardNum.length < 14) { alert('Please enter a valid card number.'); return; }
 
-  const btn = document.querySelector('.pay-submit');
+  const btn = document.querySelector('#page-payment .pay-submit');
   btn.textContent = 'Processing...';
   btn.disabled = true;
   btn.style.opacity = '0.7';
