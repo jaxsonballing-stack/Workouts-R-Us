@@ -1292,6 +1292,10 @@ function showPage(id) {
 // BUY PROGRAM
 // ══════════════════════════════
 function buyProgram(key) {
+  if (key === 'pilates') {
+    window.open('https://buy.stripe.com/4gM9AV8cybUI4EL68r8EM01', '_blank');
+    return;
+  }
   currentProgram = key;
   const p = programs[key];
 
