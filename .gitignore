@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables (contains Supabase keys)
+.env
+.env.local
+
+# Capacitor - generated build artifacts, not source
+ios/App/App/public/
+android/app/src/main/assets/public/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp

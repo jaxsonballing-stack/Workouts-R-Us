@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Workouts R Us</string>
+    <string name="title_activity_main">Workouts R Us</string>
+    <string name="package_name">com.workoutsrus.app</string>
+    <string name="custom_url_scheme">com.workoutsrus.app</string>
+</resources>
