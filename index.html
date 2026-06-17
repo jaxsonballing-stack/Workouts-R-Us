@@ -723,6 +723,46 @@
   </div>
 </div>
 
+<!-- ══════════════ BOXING PAYMENT PAGE ══════════════ -->
+<div class="page" id="page-boxing-payment">
+  <div class="payment-wrap">
+    <div class="payment-left">
+      <button class="pay-back" onclick="showPage('home')">← Back to Programs</button>
+      <div class="pay-program-card" style="background:linear-gradient(rgba(253,203,110,0.6),rgba(225,112,85,0.82)),url('boxing-bg.png') center/cover no-repeat;">
+        <div class="pay-prog-name">Boxing Fitness</div>
+        <p class="pay-prog-desc">Get fighting fit with 4 weeks of pad work, bag combos, and footwork drills.</p>
+        <div class="pay-includes">
+          <div class="pay-include-item">4-Week Full Program (20 sessions)</div>
+          <div class="pay-include-item">Combo & Technique Progression</div>
+          <div class="pay-include-item">Rest & Recovery Guide</div>
+          <div class="pay-include-item">Nutrition Plan</div>
+          <div class="pay-include-item">Exercise Video Library</div>
+        </div>
+        <div class="pay-price-row">
+          <div class="pay-price-big">$29</div>
+          <div class="pay-price-label">one-time payment · lifetime access</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-right">
+      <div class="pay-form-title">Complete Your Order</div>
+      <p class="pay-form-sub">You're one step away from your transformation.</p>
+      <div class="pay-secure">🔒 Secure checkout powered by Stripe</div>
+
+      <div class="pay-guarantee" style="margin-top:8px;">
+        <div style="font-size:28px;">🏆</div>
+        <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
+      </div>
+
+      <a href="https://buy.stripe.com/bJe6oJboK8Iw6MTaoH8EM02" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+        Pay $29 — Get Instant Access →
+      </a>
+      <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════ PAYMENT PAGE ══════════════ -->
 <div class="page" id="page-payment">
   <div class="payment-wrap">
@@ -1312,6 +1352,10 @@ function showPage(id) {
 function buyProgram(key) {
   if (key === 'pilates') {
     showPage('pilates-payment');
+    return;
+  }
+  if (key === 'boxing') {
+    showPage('boxing-payment');
     return;
   }
   currentProgram = key;
