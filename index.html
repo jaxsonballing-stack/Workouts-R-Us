@@ -1065,6 +1065,9 @@
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
 // ══════════════════════════════
 // MOBILE MENU
@@ -1081,12 +1084,22 @@ function closeMobileMenu() {
 }
 
 // ══════════════════════════════
-// AUTH
+// FIREBASE AUTH
 // ══════════════════════════════
-function getUsers() { return JSON.parse(localStorage.getItem('wru_users') || '[]'); }
-function saveUsers(u) { localStorage.setItem('wru_users', JSON.stringify(u)); }
-function getCurrentUser() { return JSON.parse(sessionStorage.getItem('wru_session') || 'null'); }
-function setCurrentUser(user) { sessionStorage.setItem('wru_session', JSON.stringify(user)); updateNavAuth(); }
+const firebaseConfig = {
+  apiKey: "AIzaSyA_xhVPIHpeZK5Re1I4ue_ww-x2-NtFHZI",
+  authDomain: "workouts-r-us-4dca9.firebaseapp.com",
+  projectId: "workouts-r-us-4dca9",
+  storageBucket: "workouts-r-us-4dca9.firebasestorage.app",
+  messagingSenderId: "526202437879",
+  appId: "1:526202437879:web:2e3728a95ffb7ce5fc93f2",
+  measurementId: "G-G8MBJRKFDP"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+auth.onAuthStateChanged(user => updateNavAuth(user));
 
 function openAuthModal(tab) {
   switchAuthTab(tab || 'login');
@@ -1104,52 +1117,64 @@ function switchAuthTab(tab) {
   document.getElementById('signup-error').textContent = '';
 }
 
+function getFirebaseError(code) {
+  const map = {
+    'auth/email-already-in-use': 'An account with this email already exists.',
+    'auth/invalid-email': 'Please enter a valid email address.',
+    'auth/weak-password': 'Password must be at least 6 characters.',
+    'auth/user-not-found': 'No account found with this email.',
+    'auth/wrong-password': 'Incorrect password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/too-many-requests': 'Too many attempts. Please try again later.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
 function handleLogin() {
-  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const email = document.getElementById('login-email').value.trim();
   const pass = document.getElementById('login-password').value;
   const err = document.getElementById('login-error');
+  const btn = document.querySelector('#auth-login-form .pay-submit');
   if (!email || !pass) { err.textContent = 'Please fill in all fields.'; return; }
-  const user = getUsers().find(u => u.email === email && u.password === pass);
-  if (!user) { err.textContent = 'Incorrect email or password.'; return; }
-  setCurrentUser(user);
-  closeAuthModal();
+  btn.textContent = 'Logging in...'; btn.disabled = true;
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(() => { closeAuthModal(); btn.textContent = 'Log In'; btn.disabled = false; })
+    .catch(e => { err.textContent = getFirebaseError(e.code); btn.textContent = 'Log In'; btn.disabled = false; });
 }
 
 function handleSignup() {
   const name = document.getElementById('signup-name').value.trim();
-  const email = document.getElementById('signup-email').value.trim().toLowerCase();
+  const email = document.getElementById('signup-email').value.trim();
   const pass = document.getElementById('signup-password').value;
   const err = document.getElementById('signup-error');
+  const btn = document.querySelector('#auth-signup-form .pay-submit');
   if (!name || !email || !pass) { err.textContent = 'Please fill in all fields.'; return; }
-  if (!email.includes('@')) { err.textContent = 'Please enter a valid email.'; return; }
   if (pass.length < 6) { err.textContent = 'Password must be at least 6 characters.'; return; }
-  const users = getUsers();
-  if (users.find(u => u.email === email)) { err.textContent = 'An account with this email already exists.'; return; }
-  const newUser = { name, email, password: pass, joinedAt: new Date().toISOString() };
-  users.push(newUser);
-  saveUsers(users);
-  setCurrentUser(newUser);
-  closeAuthModal();
+  btn.textContent = 'Creating account...'; btn.disabled = true;
+  auth.createUserWithEmailAndPassword(email, pass)
+    .then(cred => Promise.all([
+      cred.user.updateProfile({ displayName: name }),
+      db.collection('users').doc(cred.user.uid).set({ name, email, joinedAt: firebase.firestore.FieldValue.serverTimestamp() })
+    ]))
+    .then(() => { closeAuthModal(); btn.textContent = 'Create Account'; btn.disabled = false; })
+    .catch(e => { err.textContent = getFirebaseError(e.code); btn.textContent = 'Create Account'; btn.disabled = false; });
 }
 
 function handleLogout() {
-  sessionStorage.removeItem('wru_session');
-  updateNavAuth();
-  showPage('home');
+  auth.signOut().then(() => showPage('home'));
 }
 
-function updateNavAuth() {
-  const user = getCurrentUser();
+function updateNavAuth(user) {
   const navEl = document.getElementById('nav-auth');
   const mobileEl = document.getElementById('mobile-auth');
-
   if (user) {
+    const first = (user.displayName || user.email).split(' ')[0];
     if (navEl) navEl.innerHTML = `
-      <span class="nav-user">Hi, ${user.name.split(' ')[0]}</span>
+      <span class="nav-user">Hi, ${first}</span>
       <button class="nav-logout" onclick="handleLogout()">Log Out</button>
     `;
     if (mobileEl) mobileEl.innerHTML = `
-      <span style="padding:12px 0;font-size:14px;font-weight:700;color:rgba(255,255,255,0.6);border-top:1px solid var(--glass-border);">Hi, ${user.name.split(' ')[0]} 👋</span>
+      <span style="padding:12px 0;font-size:14px;font-weight:700;color:rgba(255,255,255,0.6);border-top:1px solid var(--glass-border);">Hi, ${first} 👋</span>
       <a onclick="closeMobileMenu();handleLogout();" style="display:block;text-align:center;background:rgba(255,255,255,0.08);color:#fff;border-radius:50px;padding:14px 0;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Log Out</a>
     `;
   } else {
@@ -1163,8 +1188,6 @@ function updateNavAuth() {
     `;
   }
 }
-
-updateNavAuth();
 
 // ══════════════════════════════
 // PROGRAM DATA
