@@ -723,6 +723,46 @@
   </div>
 </div>
 
+<!-- ══════════════ HIIT PAYMENT PAGE ══════════════ -->
+<div class="page" id="page-hiit-payment">
+  <div class="payment-wrap">
+    <div class="payment-left">
+      <button class="pay-back" onclick="showPage('home')">← Back to Programs</button>
+      <div class="pay-program-card" style="background:linear-gradient(rgba(255,107,53,0.6),rgba(198,40,40,0.82)),url('hiit-bg.png') center/cover no-repeat;">
+        <div class="pay-prog-name">HIIT Extreme</div>
+        <p class="pay-prog-desc">High-intensity intervals that torch fat and spike your metabolism fast over 4 weeks.</p>
+        <div class="pay-includes">
+          <div class="pay-include-item">4-Week Full Program (20 sessions)</div>
+          <div class="pay-include-item">Interval Progression System</div>
+          <div class="pay-include-item">Rest & Recovery Guide</div>
+          <div class="pay-include-item">Nutrition Plan</div>
+          <div class="pay-include-item">Exercise Video Library</div>
+        </div>
+        <div class="pay-price-row">
+          <div class="pay-price-big">$29</div>
+          <div class="pay-price-label">one-time payment · lifetime access</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-right">
+      <div class="pay-form-title">Complete Your Order</div>
+      <p class="pay-form-sub">You're one step away from your transformation.</p>
+      <div class="pay-secure">🔒 Secure checkout powered by Stripe</div>
+
+      <div class="pay-guarantee" style="margin-top:8px;">
+        <div style="font-size:28px;">🏆</div>
+        <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
+      </div>
+
+      <a href="https://buy.stripe.com/eVq9AVfF01g45IP0O78EM03" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+        Pay $29 — Get Instant Access →
+      </a>
+      <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════ BOXING PAYMENT PAGE ══════════════ -->
 <div class="page" id="page-boxing-payment">
   <div class="payment-wrap">
@@ -1356,6 +1396,10 @@ function buyProgram(key) {
   }
   if (key === 'boxing') {
     showPage('boxing-payment');
+    return;
+  }
+  if (key === 'hiit') {
+    showPage('hiit-payment');
     return;
   }
   currentProgram = key;
