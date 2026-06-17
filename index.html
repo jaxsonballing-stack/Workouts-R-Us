@@ -519,8 +519,8 @@
 <nav>
   <button class="nav-logo" onclick="showPage('home')">Workouts R Us</button>
   <ul class="nav-links">
-    <li><a onclick="showPage('home'); scrollTo('#programs')">Programs</a></li>
-    <li><a onclick="showPage('home'); scrollTo('#testimonials')">Reviews</a></li>
+    <li><a onclick="handleMyPrograms()">My Programs</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('#testimonials')">Reviews</a></li>
   </ul>
   <div class="nav-right">
     <div id="nav-auth" style="display:flex;align-items:center;gap:12px;"></div>
@@ -531,8 +531,8 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#programs')">Programs</a></li>
-    <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#testimonials')">Reviews</a></li>
+    <li><a onclick="closeMobileMenu();handleMyPrograms()">My Programs</a></li>
+    <li><a onclick="closeMobileMenu();showPage('home');scrollToSection('#testimonials')">Reviews</a></li>
   </ul>
   <div id="mobile-auth" style="padding:0 6% 20px;display:flex;flex-direction:column;gap:8px;"></div>
 </div>
@@ -759,7 +759,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/4gM9AV8cybUI4EL68r8EM01" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/4gM9AV8cybUI4EL68r8EM01" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('pilates')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -799,7 +799,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVqcN7akG1g43AH7cv8EM06" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/eVqcN7akG1g43AH7cv8EM06" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('strength')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -839,7 +839,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVqeVfakG2k81szbsL8EM05" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/eVqeVfakG2k81szbsL8EM05" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('cardio')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -879,7 +879,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/aFa9AVakG6Ao5IP1Sb8EM04" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/aFa9AVakG6Ao5IP1Sb8EM04" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('yoga')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -919,7 +919,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVq9AVfF01g45IP0O78EM03" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/eVq9AVfF01g45IP0O78EM03" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('hiit')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -959,7 +959,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/bJe6oJboK8Iw6MTaoH8EM02" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;">
+      <a href="https://buy.stripe.com/bJe6oJboK8Iw6MTaoH8EM02" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('boxing')">
         Pay $29 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
@@ -1006,6 +1006,19 @@
       <button class="pay-submit" onclick="processPayment()">Pay $29 — Get Instant Access</button>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely. We never store your card details.</p>
     </div>
+  </div>
+</div>
+
+<!-- ══════════════ MY PROGRAMS PAGE ══════════════ -->
+<div class="page" id="page-my-programs">
+  <div class="workout-wrap">
+    <div style="margin-bottom:48px;">
+      <button class="pay-back" onclick="showPage('home')">← Back to Home</button>
+      <div class="sec-label" style="margin-top:16px;">Your Library</div>
+      <div class="sec-title" style="font-size:clamp(36px,6vw,72px);margin-bottom:12px;">My Programs</div>
+      <p class="sec-sub" id="my-programs-sub">Programs you've unlocked.</p>
+    </div>
+    <div class="prog-grid" id="my-programs-grid"></div>
   </div>
 </div>
 
@@ -1187,6 +1200,70 @@ function updateNavAuth(user) {
       <a onclick="closeMobileMenu();openAuthModal('signup');" class="mobile-cta-link">Get Started</a>
     `;
   }
+}
+
+// ══════════════════════════════
+// MY PROGRAMS
+// ══════════════════════════════
+function handleMyPrograms() {
+  if (!auth.currentUser) {
+    openAuthModal('login');
+    return;
+  }
+  loadMyPrograms();
+  showPage('my-programs');
+}
+
+function savePurchase(key) {
+  const user = auth.currentUser;
+  if (!user) return;
+  db.collection('users').doc(user.uid).collection('purchases').doc(key).set({
+    programKey: key,
+    purchasedAt: firebase.firestore.FieldValue.serverTimestamp()
+  }, { merge: true });
+}
+
+function loadMyPrograms() {
+  const user = auth.currentUser;
+  if (!user) return;
+  const grid = document.getElementById('my-programs-grid');
+  const pbClass = { strength:'pb1', cardio:'pb2', yoga:'pb3', hiit:'pb4', pilates:'pb5', boxing:'pb6' };
+  grid.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-size:15px;">Loading your programs...</p>';
+
+  db.collection('users').doc(user.uid).collection('purchases').get()
+    .then(snap => {
+      if (snap.empty) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
+            <div style="font-size:64px;margin-bottom:16px;">🎯</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;margin-bottom:12px;">No Programs Yet</div>
+            <p style="color:rgba(255,255,255,0.5);margin-bottom:32px;font-size:16px;">Browse our programs below and start your transformation.</p>
+            <button class="btn-yellow" onclick="showPage('home');scrollToSection('#programs')">Browse Programs</button>
+          </div>`;
+        return;
+      }
+      grid.innerHTML = snap.docs.map(doc => {
+        const key = doc.id;
+        const p = programs[key];
+        if (!p) return '';
+        return `
+          <div class="prog-card ${pbClass[key]}" onclick="loadWorkout('${key}')">
+            <div class="prog-overlay"></div>
+            <div class="prog-info">
+              <div class="prog-tag">✅ Unlocked · Lifetime Access</div>
+              <div class="prog-name">${p.name}</div>
+              <p class="prog-desc">${p.desc}</p>
+              <div class="prog-price">
+                <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+                <button class="prog-btn">→</button>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    })
+    .catch(() => {
+      grid.innerHTML = '<p style="color:#ff6b6b;">Could not load your programs. Please try again.</p>';
+    });
 }
 
 // ══════════════════════════════
@@ -1862,7 +1939,7 @@ function formatExpiry(input) {
 }
 
 // Smooth scroll helper
-function scrollTo(id) {
+function scrollToSection(id) {
   setTimeout(() => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
