@@ -1112,7 +1112,35 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-auth.onAuthStateChanged(user => updateNavAuth(user));
+auth.onAuthStateChanged(user => {
+  updateNavAuth(user);
+  // If returning from Stripe and now logged in, finalise the pending purchase
+  const pending = sessionStorage.getItem('wru_pending_purchase');
+  if (user && pending) {
+    sessionStorage.removeItem('wru_pending_purchase');
+    savePurchase(pending);
+    setTimeout(() => { loadMyPrograms(); showPage('my-programs'); }, 600);
+  }
+});
+
+// Check for Stripe success redirect (?paid=programkey)
+(function checkStripeReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const paid = params.get('paid');
+  if (!paid || !['strength','cardio','yoga','hiit','pilates','boxing'].includes(paid)) return;
+  window.history.replaceState({}, '', window.location.pathname);
+  const unsubscribe = auth.onAuthStateChanged(user => {
+    unsubscribe();
+    if (user) {
+      savePurchase(paid);
+      setTimeout(() => { loadMyPrograms(); showPage('my-programs'); }, 600);
+    } else {
+      // Not logged in — store purchase and prompt login
+      sessionStorage.setItem('wru_pending_purchase', paid);
+      openAuthModal('login');
+    }
+  });
+})();
 
 function openAuthModal(tab) {
   switchAuthTab(tab || 'login');
