@@ -519,8 +519,8 @@
 <nav>
   <button class="nav-logo" onclick="showPage('home')">Workouts R Us</button>
   <ul class="nav-links">
-    <li><a onclick="showPage('home'); scrollTo('#programs')">Programs</a></li>
-    <li><a onclick="showPage('home'); scrollTo('#testimonials')">Reviews</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('#programs')">Programs</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('#testimonials')">Reviews</a></li>
   </ul>
   <div class="nav-right">
     <div id="nav-auth" style="display:flex;align-items:center;gap:12px;"></div>
@@ -531,8 +531,8 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#programs')">Programs</a></li>
-    <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#testimonials')">Reviews</a></li>
+    <li><a onclick="closeMobileMenu();showPage('home');scrollToSection('#programs')">Programs</a></li>
+    <li><a onclick="closeMobileMenu();showPage('home');scrollToSection('#testimonials')">Reviews</a></li>
   </ul>
   <div id="mobile-auth" style="padding:0 6% 20px;display:flex;flex-direction:column;gap:8px;"></div>
 </div>
@@ -1862,7 +1862,7 @@ function formatExpiry(input) {
 }
 
 // Smooth scroll helper
-function scrollTo(id) {
+function scrollToSection(id) {
   setTimeout(() => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
