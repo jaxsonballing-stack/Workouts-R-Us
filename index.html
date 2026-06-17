@@ -1833,7 +1833,7 @@ function processPayment() {
 // ══════════════════════════════
 function loadWorkout(key) {
   const p = programs[key];
-  currentWeek = 1;
+  currentProgram = key;
 
   document.getElementById('wh-bg-text').textContent = p.name.toUpperCase().split(' ')[0];
   document.getElementById('wh-title').textContent = p.name;
@@ -1844,10 +1844,32 @@ function loadWorkout(key) {
     `<div class="wh-meta-item"><span>${m}</span></div>`
   ).join('');
 
-  renderDays(key, 1);
   renderNutrition(key);
   renderTips(key);
   showPage('workout');
+
+  const user = auth.currentUser;
+  if (user) {
+    db.collection('users').doc(user.uid).collection('purchases').doc(key).get()
+      .then(doc => {
+        let week = 1;
+        if (doc.exists && doc.data().purchasedAt) {
+          const daysSince = Math.floor((Date.now() - doc.data().purchasedAt.toDate()) / 86400000);
+          week = Math.min(4, Math.floor(daysSince / 7) + 1);
+        }
+        setActiveWeek(week);
+        renderDays(key, week);
+      })
+      .catch(() => { setActiveWeek(1); renderDays(key, 1); });
+  } else {
+    setActiveWeek(1);
+    renderDays(key, 1);
+  }
+}
+
+function setActiveWeek(week) {
+  currentWeek = week;
+  document.querySelectorAll('.week-tab').forEach((t, i) => t.classList.toggle('active', i + 1 === week));
 }
 
 // ══════════════════════════════
