@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700;900&display=swap');
+
+:root {
+  --blue: #0b2fff;
+  --pink: #ff3ba7;
+  --yellow: #ffdf00;
+  --dark: #08080f;
+  --dark2: #0f0f1e;
+  --glass: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── PAGE WRAPPER ── */
+.page-with-nav {
+  padding-bottom: 80px;
+}
+
+/* ── BUTTONS ── */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--blue), var(--pink));
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(255,59,167,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,59,167,0.5); }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--dark);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 36px rgba(255,223,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-yellow:hover { transform: translateY(-3px); box-shadow: 0 12px 44px rgba(255,223,0,0.6); }
+
+.btn-outline {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+
+/* ── FORM STYLES ── */
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+}
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-input:focus { border-color: rgba(255,59,167,0.6); background: rgba(255,255,255,0.1); }
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+
+/* ── SECTION LABELS ── */
+.sec-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--pink);
+  border-radius: 2px;
+}
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+/* ── CARD STYLES ── */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 32px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gp1 { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+@keyframes gp2 { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SPINNER ── */
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--pink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 80px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── PROGRAM CARD BG CLASSES ── */
+.pb1 { background: linear-gradient(rgba(11,47,255,0.45),rgba(0,20,100,0.75)), url('/strength-bg.png') center/cover no-repeat; }
+.pb2 { background: linear-gradient(rgba(255,59,167,0.45),rgba(139,0,107,0.75)), url('/cardio-bg.png') center/cover no-repeat; }
+.pb3 { background: linear-gradient(rgba(106,17,203,0.45),rgba(37,117,252,0.75)), url('/yoga-bg.png') center/cover no-repeat; }
+.pb4 { background: linear-gradient(rgba(255,107,53,0.45),rgba(198,40,40,0.75)), url('/hiit-bg.png') center/cover no-repeat; }
+.pb5 { background: linear-gradient(rgba(0,184,148,0.45),rgba(0,107,90,0.75)), url('/pilates-bg.png') center/cover no-repeat; }
+.pb6 { background: linear-gradient(rgba(253,203,110,0.45),rgba(225,112,85,0.75)), url('/boxing-bg.png') center/cover no-repeat; }
+
+/* ── ERROR MESSAGE ── */
+.error-msg {
+  background: rgba(255,59,59,0.12);
+  border: 1px solid rgba(255,59,59,0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #ff6b6b;
+  margin-bottom: 20px;
+}
+
+/* ── SUCCESS MESSAGE ── */
+.success-msg {
+  background: rgba(0,184,148,0.12);
+  border: 1px solid rgba(0,184,148,0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #00b894;
+  margin-bottom: 20px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .prog-grid { grid-template-columns: 1fr 1fr !important; }
+  .testi-grid { grid-template-columns: 1fr !important; }
+  .nutrition-grid { grid-template-columns: 1fr !important; }
+  .tips-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 600px) {
+  .prog-grid { grid-template-columns: 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr !important; }
+}
