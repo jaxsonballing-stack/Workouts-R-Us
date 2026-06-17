@@ -405,10 +405,51 @@
     border-bottom:none !important; font-weight:800 !important;
   }
 
+  /* ── AUTH MODAL ── */
+  .auth-overlay {
+    position:fixed; inset:0; z-index:500;
+    background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity 0.3s;
+  }
+  .auth-overlay.open { opacity:1; pointer-events:all; }
+  .auth-modal {
+    background:var(--dark2); border:1px solid var(--glass-border);
+    border-radius:24px; padding:40px; width:100%; max-width:420px;
+    position:relative; transform:translateY(28px); transition:transform 0.3s;
+  }
+  .auth-overlay.open .auth-modal { transform:translateY(0); }
+  .auth-close {
+    position:absolute; top:14px; right:18px; background:none; border:none;
+    color:rgba(255,255,255,0.35); font-size:28px; cursor:pointer; line-height:1; transition:color 0.2s;
+  }
+  .auth-close:hover { color:#fff; }
+  .auth-modal-logo {
+    font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px;
+    background:linear-gradient(90deg,var(--blue),var(--pink));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    margin-bottom:24px; display:block;
+  }
+  .auth-tabs { display:flex; margin-bottom:28px; background:var(--glass); border-radius:12px; padding:4px; }
+  .auth-tab {
+    flex:1; padding:10px; border-radius:9px; border:none; background:none;
+    color:rgba(255,255,255,0.45); font-family:'DM Sans',sans-serif;
+    font-size:14px; font-weight:700; cursor:pointer; transition:all 0.2s;
+  }
+  .auth-tab.active { background:linear-gradient(135deg,var(--blue),var(--pink)); color:#fff; }
+  .auth-error { font-size:13px; color:#ff6b6b; font-weight:600; margin-bottom:10px; min-height:18px; }
+  .nav-user { font-size:13px; font-weight:700; color:rgba(255,255,255,0.75); white-space:nowrap; }
+  .nav-logout {
+    background:rgba(255,255,255,0.08); color:#fff; font-weight:700; font-size:12px;
+    letter-spacing:1px; text-transform:uppercase; padding:10px 20px; border-radius:50px;
+    border:1px solid var(--glass-border); cursor:pointer; transition:background 0.2s; white-space:nowrap;
+  }
+  .nav-logout:hover { background:rgba(255,255,255,0.15); }
+
   /* ── RESPONSIVE ── */
   @media(max-width:900px){
     .nav-links { display:none; }
-    .nav-cta { display:none; }
+    #nav-auth { display:none; }
     .nav-hamburger { display:flex; }
     .mobile-menu { display:block; }
     .prog-grid { grid-template-columns:1fr 1fr; }
@@ -467,6 +508,9 @@
     .hs-sep { display:none; }
     .hs-num { font-size:30px; }
   }
+  @media(max-width:600px){
+    .auth-modal { padding:28px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -479,7 +523,7 @@
     <li><a onclick="showPage('home'); scrollTo('#testimonials')">Reviews</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-cta" onclick="showPage('home'); scrollTo('#programs')">Get Started</button>
+    <div id="nav-auth" style="display:flex;align-items:center;gap:12px;"></div>
     <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -489,8 +533,8 @@
   <ul>
     <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#programs')">Programs</a></li>
     <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#testimonials')">Reviews</a></li>
-    <li><a onclick="closeMobileMenu();showPage('home');scrollTo('#programs')" class="mobile-cta-link">Get Started</a></li>
   </ul>
+  <div id="mobile-auth" style="padding:0 6% 20px;display:flex;flex-direction:column;gap:8px;"></div>
 </div>
 
 <!-- ══════════════ HOME PAGE ══════════════ -->
@@ -1035,6 +1079,92 @@ function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('navHamburger').classList.remove('open');
 }
+
+// ══════════════════════════════
+// AUTH
+// ══════════════════════════════
+function getUsers() { return JSON.parse(localStorage.getItem('wru_users') || '[]'); }
+function saveUsers(u) { localStorage.setItem('wru_users', JSON.stringify(u)); }
+function getCurrentUser() { return JSON.parse(sessionStorage.getItem('wru_session') || 'null'); }
+function setCurrentUser(user) { sessionStorage.setItem('wru_session', JSON.stringify(user)); updateNavAuth(); }
+
+function openAuthModal(tab) {
+  switchAuthTab(tab || 'login');
+  document.getElementById('authOverlay').classList.add('open');
+}
+function closeAuthModal() { document.getElementById('authOverlay').classList.remove('open'); }
+function handleOverlayClick(e) { if (e.target === document.getElementById('authOverlay')) closeAuthModal(); }
+
+function switchAuthTab(tab) {
+  document.getElementById('auth-login-form').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('auth-signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+  document.getElementById('login-error').textContent = '';
+  document.getElementById('signup-error').textContent = '';
+}
+
+function handleLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass = document.getElementById('login-password').value;
+  const err = document.getElementById('login-error');
+  if (!email || !pass) { err.textContent = 'Please fill in all fields.'; return; }
+  const user = getUsers().find(u => u.email === email && u.password === pass);
+  if (!user) { err.textContent = 'Incorrect email or password.'; return; }
+  setCurrentUser(user);
+  closeAuthModal();
+}
+
+function handleSignup() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim().toLowerCase();
+  const pass = document.getElementById('signup-password').value;
+  const err = document.getElementById('signup-error');
+  if (!name || !email || !pass) { err.textContent = 'Please fill in all fields.'; return; }
+  if (!email.includes('@')) { err.textContent = 'Please enter a valid email.'; return; }
+  if (pass.length < 6) { err.textContent = 'Password must be at least 6 characters.'; return; }
+  const users = getUsers();
+  if (users.find(u => u.email === email)) { err.textContent = 'An account with this email already exists.'; return; }
+  const newUser = { name, email, password: pass, joinedAt: new Date().toISOString() };
+  users.push(newUser);
+  saveUsers(users);
+  setCurrentUser(newUser);
+  closeAuthModal();
+}
+
+function handleLogout() {
+  sessionStorage.removeItem('wru_session');
+  updateNavAuth();
+  showPage('home');
+}
+
+function updateNavAuth() {
+  const user = getCurrentUser();
+  const navEl = document.getElementById('nav-auth');
+  const mobileEl = document.getElementById('mobile-auth');
+
+  if (user) {
+    if (navEl) navEl.innerHTML = `
+      <span class="nav-user">Hi, ${user.name.split(' ')[0]}</span>
+      <button class="nav-logout" onclick="handleLogout()">Log Out</button>
+    `;
+    if (mobileEl) mobileEl.innerHTML = `
+      <span style="padding:12px 0;font-size:14px;font-weight:700;color:rgba(255,255,255,0.6);border-top:1px solid var(--glass-border);">Hi, ${user.name.split(' ')[0]} 👋</span>
+      <a onclick="closeMobileMenu();handleLogout();" style="display:block;text-align:center;background:rgba(255,255,255,0.08);color:#fff;border-radius:50px;padding:14px 0;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Log Out</a>
+    `;
+  } else {
+    if (navEl) navEl.innerHTML = `
+      <button class="nav-cta" style="background:rgba(255,255,255,0.08);box-shadow:none;border:1px solid var(--glass-border);" onclick="openAuthModal('login')">Log In</button>
+      <button class="nav-cta" onclick="openAuthModal('signup')">Get Started</button>
+    `;
+    if (mobileEl) mobileEl.innerHTML = `
+      <a onclick="closeMobileMenu();openAuthModal('login');" style="display:block;padding:15px 0;color:rgba(255,255,255,0.75);font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-top:1px solid var(--glass-border);">Log In</a>
+      <a onclick="closeMobileMenu();openAuthModal('signup');" class="mobile-cta-link">Get Started</a>
+    `;
+  }
+}
+
+updateNavAuth();
 
 // ══════════════════════════════
 // PROGRAM DATA
@@ -1716,5 +1846,57 @@ function scrollTo(id) {
   }, 100);
 }
 </script>
+
+<!-- ══════════════ AUTH MODAL ══════════════ -->
+<div class="auth-overlay" id="authOverlay" onclick="handleOverlayClick(event)">
+  <div class="auth-modal">
+    <button class="auth-close" onclick="closeAuthModal()">×</button>
+    <span class="auth-modal-logo">Workouts R Us</span>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Log In</button>
+      <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login form -->
+    <div id="auth-login-form">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="login-email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="login-password" placeholder="••••••••">
+      </div>
+      <div class="auth-error" id="login-error"></div>
+      <button class="pay-submit" onclick="handleLogin()">Log In</button>
+      <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.4);">
+        Don't have an account? <a onclick="switchAuthTab('signup')" style="color:var(--pink);cursor:pointer;font-weight:700;">Sign Up</a>
+      </p>
+    </div>
+
+    <!-- Signup form -->
+    <div id="auth-signup-form" style="display:none;">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input class="form-input" type="text" id="signup-name" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="signup-email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="signup-password" placeholder="Min. 6 characters">
+      </div>
+      <div class="auth-error" id="signup-error"></div>
+      <button class="pay-submit" onclick="handleSignup()">Create Account</button>
+      <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.4);">
+        Already have an account? <a onclick="switchAuthTab('login')" style="color:var(--pink);cursor:pointer;font-weight:700;">Log In</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
