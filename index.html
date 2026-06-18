@@ -162,6 +162,8 @@
   .pb4{background:linear-gradient(rgba(255,107,53,0.45),rgba(198,40,40,0.75)),url('hiit-bg.png') center/cover no-repeat;}
   .pb5{background:linear-gradient(rgba(0,184,148,0.45),rgba(0,107,90,0.75)),url('pilates-bg.png') center/cover no-repeat;}
   .pb6{background:linear-gradient(rgba(253,203,110,0.45),rgba(225,112,85,0.75)),url('boxing-bg.png') center/cover no-repeat;}
+  .pb7{background:linear-gradient(rgba(106,17,203,0.5),rgba(255,59,167,0.65)),url('tone-bg.png') center/cover no-repeat;}
+  .pb8{background:linear-gradient(rgba(20,20,20,0.5),rgba(255,107,53,0.72)),url('muscle-bg.png') center/cover no-repeat;}
   .prog-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 55%); }
   .prog-info { position:absolute;bottom:0;left:0;right:0;padding:28px; }
   .prog-tag { display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:40px;margin-bottom:10px;backdrop-filter:blur(6px); }
@@ -605,7 +607,7 @@
           <div class="prog-name">Strength Builder</div>
           <p class="prog-desc">Build lean muscle & raw power with progressive overload training.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -617,7 +619,7 @@
           <div class="prog-name">Cardio Blast</div>
           <p class="prog-desc">Torch calories and supercharge your endurance with dynamic cardio sessions.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -629,7 +631,7 @@
           <div class="prog-name">Yoga Flow</div>
           <p class="prog-desc">Restore, rebalance and reconnect with deep yoga and breathwork.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -641,7 +643,7 @@
           <div class="prog-name">HIIT Extreme</div>
           <p class="prog-desc">High-intensity intervals that torch fat and spike your metabolism fast.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -653,7 +655,7 @@
           <div class="prog-name">Pilates Core</div>
           <p class="prog-desc">Sculpt and strengthen your core with precision pilates movements.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -665,7 +667,37 @@
           <div class="prog-name">Boxing Fitness</div>
           <p class="prog-desc">Get fighting fit with pad work, bag combos, and footwork drills.</p>
           <div class="prog-price">
-            <div class="prog-price-num">$29</div>
+            <div class="prog-price-num">$10.99</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb7" onclick="buyProgram('tone')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Bundle · 3 Programs</div>
+          <div class="prog-name">Tone Package</div>
+          <p class="prog-desc">Yoga Flow, Cardio Blast & Pilates Core — one complete transformation bundle.</p>
+          <div class="prog-price">
+            <div style="line-height:1.15;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--yellow);">Free 14 Days</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;">then $19.99/month</div>
+            </div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb8" onclick="buyProgram('muscle')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Bundle · 3 Programs</div>
+          <div class="prog-name">Muscle Package</div>
+          <p class="prog-desc">Strength Builder, HIIT Extreme & Boxing Fitness — built for raw power and performance.</p>
+          <div class="prog-price">
+            <div style="line-height:1.15;">
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--yellow);">Free 14 Days</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;">then $19.99/month</div>
+            </div>
             <button class="prog-btn">→</button>
           </div>
         </div>
@@ -717,7 +749,7 @@
         <span class="footer-logo-text">Workouts R Us</span>
         <p class="footer-desc">Real programs. Real coaches. Real results. Your transformation starts here.</p>
       </div>
-      <div class="footer-col"><h4>Programs</h4><ul><li><a>Strength Builder</a></li><li><a>Cardio Blast</a></li><li><a>Yoga Flow</a></li><li><a>HIIT Extreme</a></li><li><a>Pilates Core</a></li><li><a>Boxing Fitness</a></li></ul></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a>Strength Builder</a></li><li><a>Cardio Blast</a></li><li><a>Yoga Flow</a></li><li><a>HIIT Extreme</a></li><li><a>Pilates Core</a></li><li><a>Boxing Fitness</a></li><li><a>Tone Package</a></li><li><a>Muscle Package</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a>About Us</a></li><li><a>Our Coaches</a></li><li><a>Blog</a></li><li><a>Careers</a></li></ul></div>
       <div class="footer-col"><h4>Support</h4><ul><li><a>Help Center</a></li><li><a>Contact Us</a></li><li><a>Community</a></li></ul></div>
     </div>
@@ -743,7 +775,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -759,8 +791,8 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/4gM9AV8cybUI4EL68r8EM01" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('pilates')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/6oU9AV50m1g4fjp7cv8EM08" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('pilates')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
     </div>
@@ -783,7 +815,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -799,8 +831,8 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVqcN7akG1g43AH7cv8EM06" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('strength')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/eVq7sNakGe2Q7QX68r8EM07" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('strength')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
     </div>
@@ -823,7 +855,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -839,8 +871,8 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVqeVfakG2k81szbsL8EM05" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('cardio')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/dRmcN7dwS3ocfjpaoH8EM0b" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('cardio')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
     </div>
@@ -863,7 +895,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -879,8 +911,8 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/aFa9AVakG6Ao5IP1Sb8EM04" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('yoga')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/cNicN71Oa0c03AH40j8EM0c" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('yoga')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
     </div>
@@ -903,7 +935,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -919,8 +951,8 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/eVq9AVfF01g45IP0O78EM03" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('hiit')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/9B6dRb50m0c07QXgN58EM0a" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('hiit')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
     </div>
@@ -943,7 +975,7 @@
           <div class="pay-include-item">Exercise Video Library</div>
         </div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -959,10 +991,194 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <a href="https://buy.stripe.com/bJe6oJboK8Iw6MTaoH8EM02" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('boxing')">
-        Pay $29 — Get Instant Access →
+      <a href="https://buy.stripe.com/cNi3cx9gCcYM7QX68r8EM09" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('boxing')">
+        Pay $10.99 — Get Instant Access →
       </a>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe. We never store your card details.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TONE PAYMENT PAGE ══════════════ -->
+<div class="page" id="page-tone-payment">
+  <div class="payment-wrap">
+    <div class="payment-left">
+      <button class="pay-back" onclick="showPage('home')">← Back to Programs</button>
+      <div class="pay-program-card" style="background:linear-gradient(rgba(106,17,203,0.6),rgba(255,59,167,0.75)),url('tone-bg.png') center/cover no-repeat;">
+        <div class="pay-prog-name">Tone Package</div>
+        <p class="pay-prog-desc">3 complete programs — Yoga Flow, Cardio Blast & Pilates Core — bundled into one transformation plan.</p>
+        <div class="pay-includes">
+          <div class="pay-include-item">Yoga Flow — 4-Week Journey (24 sessions)</div>
+          <div class="pay-include-item">Cardio Blast — 4-Week Plan (20 sessions)</div>
+          <div class="pay-include-item">Pilates Core — 4-Week Plan (20 sessions)</div>
+          <div class="pay-include-item">Nutrition Plans for All 3 Programs</div>
+          <div class="pay-include-item">Exercise Video Libraries</div>
+        </div>
+        <div class="pay-price-row">
+          <div>
+            <div class="pay-price-big" style="line-height:1;">Free</div>
+            <div class="pay-price-label">for 14 days · then $19.99/month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-right">
+      <div class="pay-form-title">Start Your Free Trial</div>
+      <p class="pay-form-sub">14 days free — cancel anytime. No commitment.</p>
+      <div class="pay-secure">🔒 Secure checkout powered by Stripe</div>
+
+      <div class="pay-guarantee" style="margin-top:8px;">
+        <div style="font-size:28px;">🏆</div>
+        <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
+      </div>
+
+      <a href="https://buy.stripe.com/00w4gB78u1g4fjpfJ18EM0e" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('tone')">
+        Start Free Trial — Get Instant Access →
+      </a>
+      <p class="pay-disclaimer">Free for 14 days, then $19.99/month. Cancel anytime. By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TONE HUB PAGE ══════════════ -->
+<div class="page" id="page-tone-hub">
+  <div style="min-height:100vh;padding:60px 6%;background:var(--dark);">
+    <button class="pay-back" onclick="showPage('my-programs')" style="margin-bottom:40px;">← My Programs</button>
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="sec-label" style="justify-content:center;margin-bottom:12px;">Your Bundle</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:2px;margin:0;">Tone Package</h2>
+      <p style="color:rgba(255,255,255,0.55);font-size:16px;margin-top:10px;">Choose a program to start your session.</p>
+    </div>
+    <div class="prog-grid" style="max-width:900px;margin:0 auto;">
+      <div class="prog-card pb3" onclick="loadWorkout('yoga')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Tone Package · Unlocked</div>
+          <div class="prog-name">Yoga Flow</div>
+          <p class="prog-desc">Restore, rebalance and reconnect with 4 weeks of deep yoga.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb2" onclick="loadWorkout('cardio')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Tone Package · Unlocked</div>
+          <div class="prog-name">Cardio Blast</div>
+          <p class="prog-desc">Torch calories & boost endurance with 4 weeks of dynamic cardio.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb5" onclick="loadWorkout('pilates')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Tone Package · Unlocked</div>
+          <div class="prog-name">Pilates Core</div>
+          <p class="prog-desc">Sculpt and strengthen your core with precision pilates movements.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MUSCLE PAYMENT PAGE ══════════════ -->
+<div class="page" id="page-muscle-payment">
+  <div class="payment-wrap">
+    <div class="payment-left">
+      <button class="pay-back" onclick="showPage('home')">← Back to Programs</button>
+      <div class="pay-program-card" style="background:linear-gradient(rgba(20,20,20,0.55),rgba(255,107,53,0.8)),url('muscle-bg.png') center/cover no-repeat;">
+        <div class="pay-prog-name">Muscle Package</div>
+        <p class="pay-prog-desc">3 powerhouse programs — Strength Builder, HIIT Extreme & Boxing Fitness — built for raw power and performance.</p>
+        <div class="pay-includes">
+          <div class="pay-include-item">Strength Builder — 4-Week Program (20 sessions)</div>
+          <div class="pay-include-item">HIIT Extreme — 4-Week Program (16 sessions)</div>
+          <div class="pay-include-item">Boxing Fitness — 4-Week Program (16 sessions)</div>
+          <div class="pay-include-item">Nutrition Plans for All 3 Programs</div>
+          <div class="pay-include-item">Exercise Video Libraries</div>
+        </div>
+        <div class="pay-price-row">
+          <div>
+            <div class="pay-price-big" style="line-height:1;">Free</div>
+            <div class="pay-price-label">for 14 days · then $19.99/month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-right">
+      <div class="pay-form-title">Start Your Free Trial</div>
+      <p class="pay-form-sub">14 days free — cancel anytime. No commitment.</p>
+      <div class="pay-secure">🔒 Secure checkout powered by Stripe</div>
+
+      <div class="pay-guarantee" style="margin-top:8px;">
+        <div style="font-size:28px;">🏆</div>
+        <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
+      </div>
+
+      <a href="https://buy.stripe.com/4gMfZj64q6Ao9Z5cwP8EM0d" target="_blank" class="pay-submit" style="display:block;text-align:center;text-decoration:none;margin-top:32px;" onclick="savePurchase('muscle')">
+        Start Free Trial — Get Instant Access →
+      </a>
+      <p class="pay-disclaimer">Free for 14 days, then $19.99/month. Cancel anytime. By completing your purchase you agree to our Terms of Service. Your payment is processed securely by Stripe.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MUSCLE HUB PAGE ══════════════ -->
+<div class="page" id="page-muscle-hub">
+  <div style="min-height:100vh;padding:60px 6%;background:var(--dark);">
+    <button class="pay-back" onclick="showPage('my-programs')" style="margin-bottom:40px;">← My Programs</button>
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="sec-label" style="justify-content:center;margin-bottom:12px;">Your Bundle</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:2px;margin:0;">Muscle Package</h2>
+      <p style="color:rgba(255,255,255,0.55);font-size:16px;margin-top:10px;">Choose a program to start your session.</p>
+    </div>
+    <div class="prog-grid" style="max-width:900px;margin:0 auto;">
+      <div class="prog-card pb1" onclick="loadWorkout('strength')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Muscle Package · Unlocked</div>
+          <div class="prog-name">Strength Builder</div>
+          <p class="prog-desc">Build lean muscle & raw power with progressive overload training.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb4" onclick="loadWorkout('hiit')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Muscle Package · Unlocked</div>
+          <div class="prog-name">HIIT Extreme</div>
+          <p class="prog-desc">Burn fat and build endurance with high-intensity interval training.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="prog-card pb6" onclick="loadWorkout('boxing')">
+        <div class="prog-overlay"></div>
+        <div class="prog-info">
+          <div class="prog-tag">Muscle Package · Unlocked</div>
+          <div class="prog-name">Boxing Fitness</div>
+          <p class="prog-desc">Get fighting fit with pad work, bag combos, and footwork drills.</p>
+          <div class="prog-price">
+            <div style="font-size:13px;font-weight:700;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;">Start Program</div>
+            <button class="prog-btn">→</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -978,7 +1194,7 @@
         <p class="pay-prog-desc" id="pay-desc">Build lean muscle and raw power with 4 weeks of progressive overload training.</p>
         <div class="pay-includes" id="pay-includes"></div>
         <div class="pay-price-row">
-          <div class="pay-price-big">$29</div>
+          <div class="pay-price-big">$10.99</div>
           <div class="pay-price-label">one-time payment · lifetime access</div>
         </div>
       </div>
@@ -1003,7 +1219,7 @@
         <div class="pay-guarantee-text"><strong style="color:#fff;">30-Day Money-Back Guarantee.</strong> Not satisfied? Get a full refund, no questions asked.</div>
       </div>
 
-      <button class="pay-submit" onclick="processPayment()">Pay $29 — Get Instant Access</button>
+      <button class="pay-submit" onclick="processPayment()">Pay $10.99 — Get Instant Access</button>
       <p class="pay-disclaimer">By completing your purchase you agree to our Terms of Service. Your payment is processed securely. We never store your card details.</p>
     </div>
   </div>
@@ -1127,7 +1343,7 @@ auth.onAuthStateChanged(user => {
 (function checkStripeReturn() {
   const params = new URLSearchParams(window.location.search);
   const paid = params.get('paid');
-  if (!paid || !['strength','cardio','yoga','hiit','pilates','boxing'].includes(paid)) return;
+  if (!paid || !['strength','cardio','yoga','hiit','pilates','boxing','tone','muscle'].includes(paid)) return;
   window.history.replaceState({}, '', window.location.pathname);
   const unsubscribe = auth.onAuthStateChanged(user => {
     unsubscribe();
@@ -1245,17 +1461,22 @@ function handleMyPrograms() {
 function savePurchase(key) {
   const user = auth.currentUser;
   if (!user) return;
-  db.collection('users').doc(user.uid).collection('purchases').doc(key).set({
-    programKey: key,
-    purchasedAt: firebase.firestore.FieldValue.serverTimestamp()
-  }, { merge: true });
+  const keys = key === 'tone' ? ['tone','cardio','yoga','pilates']
+             : key === 'muscle' ? ['muscle','strength','hiit','boxing']
+             : [key];
+  const batch = db.batch();
+  keys.forEach(k => {
+    const ref = db.collection('users').doc(user.uid).collection('purchases').doc(k);
+    batch.set(ref, { programKey: k, purchasedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+  });
+  return batch.commit();
 }
 
 function loadMyPrograms() {
   const user = auth.currentUser;
   if (!user) return;
   const grid = document.getElementById('my-programs-grid');
-  const pbClass = { strength:'pb1', cardio:'pb2', yoga:'pb3', hiit:'pb4', pilates:'pb5', boxing:'pb6' };
+  const pbClass = { strength:'pb1', cardio:'pb2', yoga:'pb3', hiit:'pb4', pilates:'pb5', boxing:'pb6', tone:'pb7', muscle:'pb8' };
   grid.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-size:15px;">Loading your programs...</p>';
 
   db.collection('users').doc(user.uid).collection('purchases').get()
@@ -1270,15 +1491,26 @@ function loadMyPrograms() {
           </div>`;
         return;
       }
+      const purchasedKeys = snap.docs.map(d => d.id);
+      const hasTone = purchasedKeys.includes('tone');
+      const hasMuscle = purchasedKeys.includes('muscle');
+      const toneBundle = ['cardio','yoga','pilates'];
+      const muscleBundle = ['strength','hiit','boxing'];
       grid.innerHTML = snap.docs.map(doc => {
         const key = doc.id;
+        if (hasTone && toneBundle.includes(key)) return '';
+        if (hasMuscle && muscleBundle.includes(key)) return '';
         const p = programs[key];
         if (!p) return '';
+        const isTone = key === 'tone';
+        const isMuscle = key === 'muscle';
+        const clickAction = isTone ? `showPage('tone-hub')` : isMuscle ? `showPage('muscle-hub')` : `loadWorkout('${key}')`;
+        const tag = (isTone || isMuscle) ? '✅ Bundle · 3 Programs Unlocked' : '✅ Unlocked · Lifetime Access';
         return `
-          <div class="prog-card ${pbClass[key]}" onclick="loadWorkout('${key}')">
+          <div class="prog-card ${pbClass[key]}" onclick="${clickAction}">
             <div class="prog-overlay"></div>
             <div class="prog-info">
-              <div class="prog-tag">✅ Unlocked · Lifetime Access</div>
+              <div class="prog-tag">${tag}</div>
               <div class="prog-name">${p.name}</div>
               <p class="prog-desc">${p.desc}</p>
               <div class="prog-price">
@@ -1748,6 +1980,20 @@ const programs = {
       {icon:"🦶",title:"Footwork First",text:"Great boxing starts with great footwork. Practice moving on the balls of your feet and staying light and mobile."},
       {icon:"💪",title:"Punch Through",text:"Don't punch TO the target — punch THROUGH it. This gives your strikes power and snap rather than just pushing."}
     ]
+  },
+  tone: {
+    name:"Tone Package", emoji:"✨",
+    desc:"Yoga Flow, Cardio Blast & Pilates Core — one complete transformation bundle.",
+    color:"linear-gradient(rgba(106,17,203,0.6),rgba(255,59,167,0.75)),url('tone-bg.png') center/cover no-repeat",
+    meta:["3 full programs","60+ sessions total","All levels","Cancel anytime"],
+    includes:["Yoga Flow — 4-Week Journey","Cardio Blast — 4-Week Plan","Pilates Core — 4-Week Plan","Nutrition Plans for All 3","Exercise Video Libraries"]
+  },
+  muscle: {
+    name:"Muscle Package", emoji:"💪",
+    desc:"Strength Builder, HIIT Extreme & Boxing Fitness — built for raw power and performance.",
+    color:"linear-gradient(rgba(20,20,20,0.55),rgba(255,107,53,0.8)),url('muscle-bg.png') center/cover no-repeat",
+    meta:["3 full programs","52+ sessions total","All levels","Cancel anytime"],
+    includes:["Strength Builder — 4-Week Program","HIIT Extreme — 4-Week Program","Boxing Fitness — 4-Week Program","Nutrition Plans for All 3","Exercise Video Libraries"]
   }
 };
 
@@ -1768,6 +2014,14 @@ function showPage(id) {
 // BUY PROGRAM
 // ══════════════════════════════
 function buyProgram(key) {
+  if (key === 'tone') {
+    showPage('tone-payment');
+    return;
+  }
+  if (key === 'muscle') {
+    showPage('muscle-payment');
+    return;
+  }
   if (key === 'pilates') {
     showPage('pilates-payment');
     return;
