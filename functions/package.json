@@ -1,0 +1,16 @@
+{
+  "name": "workouts-r-us-functions",
+  "description": "Stripe webhook handler for Workouts R Us",
+  "scripts": {
+    "deploy": "firebase deploy --only functions"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0",
+    "stripe": "^14.0.0"
+  }
+}
